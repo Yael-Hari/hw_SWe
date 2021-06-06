@@ -29,11 +29,14 @@ public class Card {
     }
 
     public String toString() {
-        if (this.number <= 10) {
+        if (this.number <= 10 && this.number > 1) {
             return this.getNumber() + " of " + this.getShape();
         } else {
+            if (this.getNumber() == 1) {
+                return "Ace of " + this.getShape();
+            }
             if (this.getNumber() == 11) {
-                return "Prince of " + this.getShape();
+                return "Jack of " + this.getShape();
             }
             if (this.getNumber() == 12) {
                 return "Queen of " + this.getShape();

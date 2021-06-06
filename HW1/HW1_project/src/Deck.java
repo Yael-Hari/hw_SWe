@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Deck {
-    public List<Card> deck = new ArrayList<Card>();
+    public List<Card> deck = new ArrayList<>();
     private boolean fillDeck;
 
     public Deck(boolean fillDeck) {
@@ -41,10 +41,11 @@ public class Deck {
         return toRemoveCard;
     }
 
-    public void addAllCards(Deck other) {
-        int otherLen = other.getDeck().size();
-        for (int i = 0; i<otherLen; i++) {
-            this.deck.add(other.removeTopCard());
+    public void addAllCards(Deck other1, Deck other2) {
+        int otherLen = other1.getDeck().size();
+        for (int i = 0; i < otherLen; i++) {
+            this.deck.add(other1.removeTopCard());
+            this.deck.add(other2.removeTopCard());
         }
     }
 
@@ -55,9 +56,8 @@ public class Deck {
 
     public void shuffle() {
         for (int i = 0; i < 50; i++) {
-            Main.rnd = new Random();
-            int index1 = Main.rnd.nextInt();
-            int index2 = Main.rnd.nextInt();
+            int index1 = Main.rnd.nextInt(this.deck.size());
+            int index2 = Main.rnd.nextInt(this.deck.size());
 
             Card temp = this.deck.get(index1);
             this.deck.set(index1, this.deck.get(index2));
