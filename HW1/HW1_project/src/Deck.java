@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -43,10 +44,18 @@ public class Deck {
 
     public void addAllCards(Deck other1, Deck other2) {
         int otherLen = other1.getDeck().size();
+        List<Card> tempDeck = new ArrayList<>();
         for (int i = 0; i < otherLen; i++) {
-            this.deck.add(other1.removeTopCard());
-            this.deck.add(other2.removeTopCard());
+            tempDeck.add(other1.removeTopCard());
+            tempDeck.add(other2.removeTopCard());
         }
+        Collections.reverse(tempDeck);
+
+        int tempDeckLen = tempDeck.size();
+        for (int i = 0; i < tempDeckLen; i++) {
+            this.deck.add(tempDeck.get(i));
+        }
+
     }
 
     public boolean isEmpty() {
