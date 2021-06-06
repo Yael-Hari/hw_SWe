@@ -57,7 +57,7 @@ public class Main {
         Note: you may change the given code, but you must not change the signature of the method.
          */
 
-        return compressedString;
+        return decompressedString;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
