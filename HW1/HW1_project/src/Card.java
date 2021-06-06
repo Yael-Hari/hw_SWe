@@ -1,6 +1,6 @@
 public class Card {
-    private int number;
-    private String shape;
+    private final int number;
+    private final String shape;
     static String[] symbols = {"♥", "♠", "♦", "♣"};
 
 
@@ -14,16 +14,8 @@ public class Card {
         return this.number;
     }
 
-    public void setNumber(int newNumber) {
-        this.number = newNumber;
-    }
-
     public String getShape() {
         return this.shape;
-    }
-
-    public void setShape(String newShape) {
-        this.shape = newShape;
     }
 
     public int compare(Card other) {
