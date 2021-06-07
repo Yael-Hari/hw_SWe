@@ -15,13 +15,13 @@ public class Deck {
         return deck;
     }
 
-    /* create cards */
-    public enum Shape {
-        Spades,
-        Diamonds,
-        Clubs,
-        Hearts
-    }
+//    /* create cards */
+//    public enum Shape {
+//        Spades,
+//        Diamonds,
+//        Clubs,
+//        Hearts
+//    }
 
     private void createDeck(){
         for(Shape shape : Shape.values()) {
@@ -59,8 +59,7 @@ public class Deck {
     }
 
     public boolean isEmpty() {
-        if (this.deck.size() == 0) { return true; }
-        else { return false; }
+        return this.deck.size() == 0;
     }
 
     public void shuffle() {

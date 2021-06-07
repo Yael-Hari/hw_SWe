@@ -45,56 +45,23 @@ public class WarGame {
         int index = 0;
 
         while (!theresAWinner()) {
-            boolean warWinner = false;
-
-
-//            for (int k = 0; k < player1.getSelfDeck().getDeck().size(); k++) {
-//                System.out.print(player1.getSelfDeck().getDeck().get(k).toString() + " , ");
-//            }
-//            System.out.println();
-//            for (int k = 0; k < player1.getWinDeck().getDeck().size(); k++) {
-//                System.out.print(player1.getWinDeck().getDeck().get(k).toString() + " , ");
-//            }
-//            System.out.println();
-
-
-
             System.out.println("------------------------- Round number " + ++index + " -------------------------");
-            //todo fix shichpul
+            boolean warWinner = false;
+            int i = 0;
+
             // if needed switch decks
-            if (this.player1.getSelfDeck().isEmpty()) {
-                this.player1.setSelfDeck(player1.getWinDeck());
-                this.player1.setWinDeck(new Deck(false));
-                this.player1.getSelfDeck().shuffle();
-            }
-            if (this.player2.getSelfDeck().isEmpty()) {
-                this.player2.setSelfDeck(player2.getWinDeck());
-                this.player2.setWinDeck(new Deck(false));
-                this.player2.getSelfDeck().shuffle();
-            }
+            reStockSelfDeck();
 
-            //
-
+            // draw cards
             middleDeck1.addCard(player1.getSelfDeck().removeTopCard());
             System.out.println(player1.getName() + " drew " + middleDeck1.getDeck().get(0).toString());
             middleDeck2.addCard(player2.getSelfDeck().removeTopCard());
             System.out.println(player2.getName() + " drew " + middleDeck2.getDeck().get(0).toString());
 
             //WAR
-            if (middleDeck1.getDeck().get(0).getNumber() == middleDeck2.getDeck().get(0).getNumber()) {
+            while (middleDeck1.getDeck().get(i).getNumber() == middleDeck2.getDeck().get(i).getNumber() && !warWinner) {
                 System.out.println("Starting a war...");
-            }
-
-            int i = 0;
-            while (middleDeck1.getDeck().get(i).getNumber() == middleDeck2.getDeck().get(i).getNumber() && !warWinner){
-                i = middleDeck1.getDeck().size() - 1;
                 for (int j = 0; j < 3; j++) {
-//                    if (player1.getSelfDeck().isEmpty()) {
-//                        return player2.getName();
-//                    }
-//                    if (player2.getSelfDeck().isEmpty()) {
-//                        return player1.getName();
-//                    }
                     if (theresAWinner()) {
                         if (this.player1.getSelfDeck().isEmpty() && this.player1.getWinDeck().isEmpty()) {
                             return player2.getName();
@@ -102,19 +69,9 @@ public class WarGame {
                             return player1.getName();
                         }
                     }
-                    //todo : shichpul
-                    if (this.player1.getSelfDeck().isEmpty()) {
-                        this.player1.setSelfDeck(player1.getWinDeck());
-                        this.player1.setWinDeck(new Deck(false));
-                        this.player1.getSelfDeck().shuffle();
-                    }
-                    if (this.player2.getSelfDeck().isEmpty()) {
-                        this.player2.setSelfDeck(player2.getWinDeck());
-                        this.player2.setWinDeck(new Deck(false));
-                        this.player2.getSelfDeck().shuffle();
-                    }
+                    reStockSelfDeck();
 
-                    //take out card
+                    //draw 1 card
                     middleDeck1.addCard(player1.getSelfDeck().removeTopCard());
                     middleDeck2.addCard(player2.getSelfDeck().removeTopCard());
 
@@ -125,16 +82,15 @@ public class WarGame {
                 }
 
                 i = middleDeck1.getDeck().size() - 1;
+                System.out.println(player1.getName() + " drew " + middleDeck1.getDeck().get(i).toString());
+                System.out.println(player2.getName() + " drew " + middleDeck2.getDeck().get(i).toString());
                 if (middleDeck1.getDeck().get(i).getNumber() != middleDeck2.getDeck().get(i).getNumber()){
-                    System.out.println(player1.getName() + " drew " + middleDeck1.getDeck().get(i).toString());
-                    System.out.println(player2.getName() + " drew " + middleDeck2.getDeck().get(i).toString());
                     if (middleDeck1.getDeck().get(i).getNumber() > middleDeck2.getDeck().get(i).getNumber()) {
                         System.out.println(player1.getName() + " won the war");
-                        warWinner = true;
                     } else {
                         System.out.println(player2.getName() + " won the war");
-                        warWinner = true;
                     }
+                    warWinner = true;
                 }
             }
 
@@ -150,11 +106,9 @@ public class WarGame {
                     System.out.println(player2.getName() + " won");
                 }
             }
-            warWinner = false;
         }
 
         // set winner
-
         if (this.player1.getSelfDeck().isEmpty() && this.player1.getWinDeck().isEmpty()) {
             winner = player2.getName();
         } else {
@@ -168,5 +122,18 @@ public class WarGame {
     boolean theresAWinner() {
         return (this.player1.getSelfDeck().isEmpty() && this.player1.getWinDeck().isEmpty()) ||
                 (this.player2.getSelfDeck().isEmpty() && this.player2.getWinDeck().isEmpty());
+    }
+
+    void reStockSelfDeck(){
+        if (this.player1.getSelfDeck().isEmpty()) {
+            this.player1.setSelfDeck(player1.getWinDeck());
+            this.player1.setWinDeck(new Deck(false));
+            this.player1.getSelfDeck().shuffle();
+        }
+        if (this.player2.getSelfDeck().isEmpty()) {
+            this.player2.setSelfDeck(player2.getWinDeck());
+            this.player2.setWinDeck(new Deck(false));
+            this.player2.getSelfDeck().shuffle();
+        }
     }
 }
