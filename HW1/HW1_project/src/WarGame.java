@@ -5,7 +5,6 @@ public class WarGame {
     private Player player2;
     private Deck middleDeck1;
     private Deck middleDeck2;
-    Player [] playersArr = new Player[2];
 
 
     public WarGame(String name1, String name2){
@@ -13,8 +12,6 @@ public class WarGame {
         this.player2 = new Player(name2);
         this.middleDeck1 = new Deck(false);
         this.middleDeck2 = new Deck(false);
-        playersArr[0] = player1;
-        playersArr[1] = player2;
     }
 
     public void InitializeGame(){
@@ -22,30 +19,33 @@ public class WarGame {
         Deck mainDeck = new Deck(true);
         mainDeck.shuffle();
 
-        sortPlayers(playersArr);
+        sortPlayers(player1, player2);
 
-        //split dec to players:
+        //split deck to players:
         while(!mainDeck.isEmpty()) {
-            for (int i = 0; i<2; i++) {
-                Card currentCardToGive = mainDeck.removeTopCard();
-                this.playersArr[i].addToSelfDeck(currentCardToGive);
-            }
+            this.player1.addToSelfDeck(mainDeck.removeTopCard());
+            this.player2.addToSelfDeck(mainDeck.removeTopCard());
         }
-
     }
 
-    public void sortPlayers(Player [] arr) {
-        String[] names = {arr[0].getName(), arr[1].getName()};
+    public void sortPlayers(Player player1, Player player2) {
+        String[] names = {player1.getName(), player2.getName()};
         Arrays.sort(names);
-        if (names[0] != arr[0].getName()) {
-            Player temp_player = arr[0];
-            arr[0] = arr[1];
-            arr[1] = temp_player;
+//        System.out.println("there: " + names[0].equals(player2.getName()));
+        if (names[0].equals(player2.getName())) {
+//            System.out.println("1-------here: " + player1.getName() + ", " + player2.getName());
+            String temp = player1.getName();
+            player1.setName(player2.getName());
+            player2.setName(temp);
+//            System.out.println("2-------here: " + player1.getName() + ", " + player2.getName());
         }
     }
 
     String start() {
         InitializeGame();
+
+//        System.out.println("-------here: " + player1.getName() + ", " + player2.getName());
+
         System.out.println("Initializing the game...");
         String winner;
         int index = 0;

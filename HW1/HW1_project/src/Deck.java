@@ -46,14 +46,14 @@ public class Deck {
         int otherLen = other1.getDeck().size();
         List<Card> tempDeck = new ArrayList<>();
         for (int i = 0; i < otherLen; i++) {
-            tempDeck.add(other1.removeTopCard());
             tempDeck.add(other2.removeTopCard());
+            tempDeck.add(other1.removeTopCard());
         }
         Collections.reverse(tempDeck);
 
         int tempDeckLen = tempDeck.size();
-        for (int i = 0; i < tempDeckLen; i++) {
-            this.deck.add(tempDeck.get(i));
+        for (int i = tempDeckLen - 1; i >= 0; i--) {
+            this.addCard(tempDeck.get(i));
         }
 
     }

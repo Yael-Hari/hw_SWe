@@ -1,7 +1,8 @@
 public class Card {
     private final int number;
     private final String shape;
-    static String[] symbols = {"♥", "♠", "♦", "♣"};
+    static String[] symbols = {"♠", "♦", "♣", "♥"};
+//    static String[] symbols = {"♥", "♠", "♦", "♣"};
 
 
     public Card(int number, int shape) {
