@@ -31,22 +31,16 @@ public class WarGame {
     public void sortPlayers(Player player1, Player player2) {
         String[] names = {player1.getName(), player2.getName()};
         Arrays.sort(names);
-//        System.out.println("there: " + names[0].equals(player2.getName()));
         if (names[0].equals(player2.getName())) {
-//            System.out.println("1-------here: " + player1.getName() + ", " + player2.getName());
             String temp = player1.getName();
             player1.setName(player2.getName());
             player2.setName(temp);
-//            System.out.println("2-------here: " + player1.getName() + ", " + player2.getName());
         }
     }
 
     String start() {
-        InitializeGame();
-
-//        System.out.println("-------here: " + player1.getName() + ", " + player2.getName());
-
         System.out.println("Initializing the game...");
+        InitializeGame();
         String winner;
         int index = 0;
 
@@ -95,11 +89,29 @@ public class WarGame {
             while (middleDeck1.getDeck().get(i).getNumber() == middleDeck2.getDeck().get(i).getNumber() && !warWinner){
                 i = middleDeck1.getDeck().size() - 1;
                 for (int j = 0; j < 3; j++) {
-                    if (player1.getSelfDeck().isEmpty()) {
-                        return player2.getName();
+//                    if (player1.getSelfDeck().isEmpty()) {
+//                        return player2.getName();
+//                    }
+//                    if (player2.getSelfDeck().isEmpty()) {
+//                        return player1.getName();
+//                    }
+                    if (theresAWinner()) {
+                        if (this.player1.getSelfDeck().isEmpty() && this.player1.getWinDeck().isEmpty()) {
+                            return player2.getName();
+                        } else {
+                            return player1.getName();
+                        }
                     }
-                    if (player2.getSelfDeck().isEmpty()) {
-                        return player1.getName();
+                    //todo : shichpul
+                    if (this.player1.getSelfDeck().isEmpty()) {
+                        this.player1.setSelfDeck(player1.getWinDeck());
+                        this.player1.setWinDeck(new Deck(false));
+                        this.player1.getSelfDeck().shuffle();
+                    }
+                    if (this.player2.getSelfDeck().isEmpty()) {
+                        this.player2.setSelfDeck(player2.getWinDeck());
+                        this.player2.setWinDeck(new Deck(false));
+                        this.player2.getSelfDeck().shuffle();
                     }
 
                     //take out card
