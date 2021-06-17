@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Folder extends StorageItem {
-    super.name();
     List<Folder> folderList;
-    List<file> fileList =;
+    List<File> fileList;
 
     public Folder(String name) {
         super(name);
@@ -24,17 +25,17 @@ public class Folder extends StorageItem {
         if (this.fileList.contains(file))
             return false;
         else{
-            this.fileList.add(folder);
+            this.fileList.add(file);
             return true;
         }
     }
 
-     File findFile (string path){
+     File findFile (String path){
          String[] path_list = path.split("/");
          return find_file_secondary(path_list, 0, this.folderList, this.fileList);
     }
 
-     File find_file_secondary(Sting [] path_list, int i, List<Folder> folder_list, List<file> file_list){
+     File find_file_secondary(String [] path_list, int i, List<Folder> folder_list, List<File> file_list){
          for (File file : file_list)
              if (file.getName() == path_list[i])
                  return file;

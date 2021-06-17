@@ -2,7 +2,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Random;
 
-class StorageItem {
+abstract class StorageItem {
     private String name;
     private long date;
 
@@ -23,31 +23,23 @@ class StorageItem {
         this.name = new_name;
     }
 
-//    abstract int getSize();
+    abstract int getSize();
 
     public void setDate(){
-
+        //find milliseconds from 1970 to 2021
         String strDate = "2021-12-31 23:59:59";
         Timestamp endOfTimesStamp= Timestamp.valueOf(strDate);
         Long milliseconds = endOfTimesStamp.getTime();
-        System.out.println("milliseconds: " + milliseconds);
 
-        Random rnd = new Random(42);
-        long longLottery = rnd.nextLong(); //Main.rnd...
-        System.out.println("longLottery: " + longLottery);
+        //generate random long
+        long longLottery = Main.rnd.nextLong();
 
-        long rightLimit = milliseconds;
-        long generatedLong = (long) (Math.random() * rightLimit);
-
-        this.date = longLottery % milliseconds;
-        System.out.println("this.date = " + this.getDate());
-
-    }
-
-
-    public static void main(String[] args) {
-        StorageItem item = new StorageItem("josh");
-
+        //set date
+        if (longLottery < 0) {
+            this.date = -longLottery % milliseconds;
+        } else {
+            this.date = longLottery % milliseconds;
+        }
     }
 
 
