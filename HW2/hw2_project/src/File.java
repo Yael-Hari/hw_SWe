@@ -15,4 +15,9 @@ public class File extends StorageItem{
     public int getSize(){
         return this.fileContent.length();
     }
+
+    public void printContent(){
+        System.out.println(this.getName() + " Size: " + this.getSize() + "MB" +
+                " Created" + this.getDate());
+    }
 }
