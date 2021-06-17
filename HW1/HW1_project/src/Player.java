@@ -4,12 +4,14 @@ public class Player {
     private Deck winDeck;
 
     public Player(String name){
+        /**builder*/
         this.name = name;
         this.selfDeck = new Deck(false);
         this.winDeck = new Deck(false);
     }
 
     public String getName() {
+        /** return player's name */
         return this.name;
     }
 
