@@ -12,7 +12,7 @@ public class Folder extends StorageItem {
         this.fileList = new ArrayList<File>();
     }
 
-    boolean add_item (Folder folder){
+    boolean addItem(Folder folder){
         if (this.folderList.contains(folder))
             return false;
         else{
@@ -21,7 +21,7 @@ public class Folder extends StorageItem {
         }
     }
 
-    boolean add_item (File file){
+    boolean addItem(File file){
         if (this.fileList.contains(file))
             return false;
         else{
