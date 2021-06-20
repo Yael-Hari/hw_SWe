@@ -3,6 +3,9 @@ public class File extends StorageItem{
     private String fileContent;
 
     public File(String name, String extension) {
+        /**
+         * builder
+         */
         super(name);
         this.extension = extension;
         this.fileContent = "";

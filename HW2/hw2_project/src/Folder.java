@@ -7,6 +7,9 @@ public class Folder extends StorageItem {
     List<File> fileList;
 
     public Folder(String name) {
+        /**
+         * builder
+         */
         super(name);
         this.folderList = new ArrayList<Folder>();
         this.fileList = new ArrayList<File>();
@@ -31,12 +34,18 @@ public class Folder extends StorageItem {
     }
 
      File findFile (String path){
+         /**
+          * search the file in the path
+          */
          String[] path_list = path.split("/");
 
          return find_file_secondary(path_list, 0, this.folderList, this.fileList);
     }
 
      File find_file_secondary(String [] path_list, int i, List<Folder> folder_list, List<File> file_list){
+         /**
+          * secondary recurtion function for the main file finder
+          */
          for (File file : file_list)
              if (file.getName().equals(path_list[i]))
                  return file;
@@ -48,6 +57,9 @@ public class Folder extends StorageItem {
      }
 
      int getSize (){
+         /**
+          * get the size of a folder and all its content
+          */
         int sum = 0;
         for(File file : this.fileList)
             sum += file.getSize();
@@ -59,6 +71,9 @@ public class Folder extends StorageItem {
      }
 
      int getSize_secondary( Folder folder){
+         /**
+          * secondary recurtion function for the getsize function
+          */
         int sum = 0;
          for(File file : folder.fileList)
              sum += file.getSize();
@@ -69,10 +84,16 @@ public class Folder extends StorageItem {
      }
 
     void printTree(SortingField field){
+        /**
+         * printing the file tree of a folder
+         */
         printTreeSecondary(this, 0, field);
     }
 
     void printTreeSecondary (Folder folder, int i, SortingField field){
+        /**
+         * secondary recurtion function for the tree printing
+         */
         for (int j=0; j<i; j++)
             System.out.print("|    ") ;
         System.out.println(folder.getName());
