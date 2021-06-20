@@ -32,21 +32,18 @@ public class Folder extends StorageItem {
 
      File findFile (String path){
          String[] path_list = path.split("/");
-         for (String path1 : path_list){
-             System.out.print(path1 + ", ");
-             System.out.println();
+         System.out.println(path_list[0]);
          }
          return find_file_secondary(path_list, 0, this.folderList, this.fileList);
     }
 
      File find_file_secondary(String [] path_list, int i, List<Folder> folder_list, List<File> file_list){
          for (File file : file_list)
-             if (file.getName() == path_list[i])
+             if (file.getName().equals(path_list[i]))
                  return file;
          for (Folder folder : folder_list)
-             if (folder.getName() == path_list[i])
+             if (folder.getName().equals(path_list[i]))
                  return find_file_secondary(path_list,i+1, folder.folderList, folder.fileList);
-         return null;
      }
 
      int getSize (){
