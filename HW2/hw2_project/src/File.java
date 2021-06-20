@@ -13,7 +13,8 @@ public class File extends StorageItem{
     }
 
     public int getSize(){
-        return this.fileContent.length();
+        this.size = this.fileContent.length();
+        return this.size;
     }
 
     public void addContent(String content) {

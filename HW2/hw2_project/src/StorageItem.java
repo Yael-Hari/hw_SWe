@@ -5,11 +5,13 @@ import java.util.Random;
 abstract class StorageItem {
     private String name;
     private long date;
+    private int size;
 
     public StorageItem(String name){
         /** builder **/
         this.name = name;
         this.setDate();
+        this.size = 0;
     }
     public String getName() {
         return this.name;
