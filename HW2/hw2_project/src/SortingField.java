@@ -9,10 +9,12 @@ enum SortingField
     DATE;
 }
 
-
 class SortingMethods {
 
     public static List<StorageItem> sortByName(Folder folder){
+        /**sort by name
+         * return sorted List
+         */
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);
@@ -20,12 +22,10 @@ class SortingMethods {
         return mergeList;
     }
 
-//    //Compare by first name and then last name
-//    Comparator<Employee> compareByName = Comparator
-//            .comparing(Employee::getFirstName)
-//            .thenComparing(Employee::getLastName);
-
     public static List<StorageItem> sortByDate(Folder folder){
+        /**sort by date
+         * return sorted List
+         */
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);
@@ -36,6 +36,9 @@ class SortingMethods {
     }
 
     public static List<StorageItem> sortBySize(Folder folder){
+        /**sort by size
+         * return sorted List
+         */
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);

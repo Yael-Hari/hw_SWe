@@ -1,8 +1,4 @@
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 
 abstract class StorageItem {
     protected String name;
@@ -10,7 +6,9 @@ abstract class StorageItem {
     protected int size;
 
     public StorageItem(String name){
-        /** builder **/
+        /**
+         * builder
+         */
         this.name = name;
         this.setDate();
         this.size = 0;
@@ -20,6 +18,9 @@ abstract class StorageItem {
     }
 
     public Timestamp getDate() {
+        /** return the date in a Timestamp object
+         *
+         */
         Timestamp dateObj = new Timestamp(this.date);
         return dateObj;
     }
@@ -31,6 +32,9 @@ abstract class StorageItem {
     abstract int getSize();
 
     public void setDate(){
+        /**set date in milliseconds since 2017
+         *
+         */
         //find milliseconds from 2017 to 2021
         String strDate = "2017-01-01 00:00:00";
         Timestamp startOfTimesStamp = Timestamp.valueOf(strDate);
@@ -52,26 +56,7 @@ abstract class StorageItem {
             this.date = millisecondsStart + (longLottery % milliseconds);
         }
 
-//        Calendar cal1 = Calendar.getInstance();
-//        cal1.set(Calendar.DATE, 30);
-//        cal1.set(Calendar.MONTH, 11);
-//        cal1.set(Calendar.YEAR, 2021);
-//        cal1.set(Calendar.HOUR, 23);
-//        cal1.set(Calendar.MINUTE, 59);
-//        cal1.set(Calendar.SECOND, 59);
-//        Date date1 = cal1.getTime();
-//
-//        System.out.println("date: " + date1);
-
     }
 
-
     abstract void printTree(SortingField field);
-
-
-
-
-
-
-
 }
