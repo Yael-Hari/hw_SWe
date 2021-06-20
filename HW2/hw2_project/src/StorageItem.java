@@ -6,10 +6,7 @@ abstract class StorageItem {
     protected int size;
 
     public StorageItem(String name){
-        /**
-         * builder
-         */
-        this.name = name;
+        this.setName(name);
         this.setDate();
         this.size = 0;
     }
@@ -18,11 +15,8 @@ abstract class StorageItem {
     }
 
     public Timestamp getDate() {
-        /** return the date in a Timestamp object
-         *
-         */
-        Timestamp dateObj = new Timestamp(this.date);
-        return dateObj;
+        /* return: the date in a Timestamp object */
+        return new Timestamp(this.date);
     }
 
     public void setName(String new_name){
@@ -32,9 +26,7 @@ abstract class StorageItem {
     abstract int getSize();
 
     public void setDate(){
-        /**set date in milliseconds since 2017
-         *
-         */
+        /* set date in milliseconds since 2017 */
         //find milliseconds from 2017 to 2021
         String strDate = "2017-01-01 00:00:00";
         Timestamp startOfTimesStamp = Timestamp.valueOf(strDate);
