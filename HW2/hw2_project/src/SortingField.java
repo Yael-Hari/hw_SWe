@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 enum SortingField
 {
     SIZE,
@@ -5,24 +9,38 @@ enum SortingField
     DATE;
 }
 
-void sort(Folder folder){
-    List<StorageItem> mergeList = new ArrayList<StorageItem>();
-    mergeList.addAll(folder.folderList());
-    mergeList.addAll(folder.fileList());
-    mergeList.sort(Comparator.comparing(StorageItem::size));
-}
+
 class sortingMethods {
 
-    void sortByName(){
-
+    void sort(Folder folder){
+        List<StorageItem> mergeList = new ArrayList<StorageItem>();
+        mergeList.addAll(folder.folderList);
+        mergeList.addAll(folder.fileList);
+        mergeList.sort(Comparator.comparing(StorageItem::getSize));
     }
 
-    void sortByDate(){
-
+    List<StorageItem> sortByName(Folder folder){
+        List<StorageItem> mergeList = new ArrayList<StorageItem>();
+        mergeList.addAll(folder.folderList);
+        mergeList.addAll(folder.fileList);
+        mergeList.sort(Comparator.comparing(StorageItem::getName));
+        return mergeList;
     }
 
-    void sortBySize(){
+    List<StorageItem> sortByDate(Folder folder){
+        List<StorageItem> mergeList = new ArrayList<StorageItem>();
+        mergeList.addAll(folder.folderList);
+        mergeList.addAll(folder.fileList);
+        mergeList.sort(Comparator.comparing(StorageItem::getDate));
+        return mergeList;
+    }
 
+    List<StorageItem> sortBySize(Folder folder){
+        List<StorageItem> mergeList = new ArrayList<StorageItem>();
+        mergeList.addAll(folder.folderList);
+        mergeList.addAll(folder.fileList);
+        mergeList.sort(Comparator.comparing(StorageItem::getSize));
+        return mergeList;
     }
 }
 
