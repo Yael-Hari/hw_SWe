@@ -19,8 +19,9 @@ abstract class StorageItem {
         return this.name;
     }
 
-    public long getDate() {
-        return this.date;
+    public Timestamp getDate() {
+        Timestamp dateObj = new Timestamp(this.date);
+        return dateObj;
     }
 
     public void setName(String new_name){
@@ -30,19 +31,25 @@ abstract class StorageItem {
     abstract int getSize();
 
     public void setDate(){
-        //find milliseconds from 1970 to 2021
-        String strDate = "2021-12-31 23:59:59";
+        //find milliseconds from 2017 to 2021
+        String strDate = "2017-01-01 00:00:00";
+        Timestamp startOfTimesStamp = Timestamp.valueOf(strDate);
+        long millisecondsStart = startOfTimesStamp.getTime();
+
+        strDate = "2021-12-31 23:59:59";
         Timestamp endOfTimesStamp = Timestamp.valueOf(strDate);
-        Long milliseconds = endOfTimesStamp.getTime();
+        long millisecondsEnd = endOfTimesStamp.getTime();
+
+        long milliseconds = millisecondsEnd - millisecondsStart;
 
         //generate random long
         long longLottery = Main.rnd.nextLong();
 
         //set date
         if (longLottery < 0) {
-            this.date = -longLottery % milliseconds;
+            this.date = millisecondsStart + (-longLottery % milliseconds);
         } else {
-            this.date = longLottery % milliseconds;
+            this.date = millisecondsStart + (longLottery % milliseconds);
         }
 
 //        Calendar cal1 = Calendar.getInstance();

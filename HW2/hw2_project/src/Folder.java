@@ -32,8 +32,7 @@ public class Folder extends StorageItem {
 
      File findFile (String path){
          String[] path_list = path.split("/");
-         System.out.println(path_list[0]);
-         }
+
          return find_file_secondary(path_list, 0, this.folderList, this.fileList);
     }
 
@@ -41,9 +40,11 @@ public class Folder extends StorageItem {
          for (File file : file_list)
              if (file.getName().equals(path_list[i]))
                  return file;
-         for (Folder folder : folder_list)
+         for (Folder folder : folder_list) {
              if (folder.getName().equals(path_list[i]))
-                 return find_file_secondary(path_list,i+1, folder.folderList, folder.fileList);
+                 return find_file_secondary(path_list, i + 1, folder.folderList, folder.fileList);
+         }
+         return null;
      }
 
      int getSize (){

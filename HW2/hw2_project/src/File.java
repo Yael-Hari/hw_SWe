@@ -18,13 +18,18 @@ public class File extends StorageItem{
         return this.size;
     }
 
+    public String getContent(){
+        return this.fileContent;
+    }
+
     public void addContent(String content) {
         this.fileContent = content;
     }
 
     public void printContent(){
         System.out.println(this.getName() + " Size: " + this.getSize() + "MB" +
-                " Created" + this.getDate());
+                " Created: " + this.getDate() +
+                "\n" + getContent());
     }
 
     void printTree(SortingField field){}
