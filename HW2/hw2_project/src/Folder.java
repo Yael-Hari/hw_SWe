@@ -66,6 +66,32 @@ public class Folder extends StorageItem {
          return sum;
      }
 
+    void printTree(SortingField field){
+        printTreeSecondary(0, field);
+    }
+
+    void printTreeSecondary (Folder folder, int i, SortingField field){
+        for (int j=0; j<i; j++)
+            System.out.print("| ") ;
+        System.out.println();
+        System.out.println(folder.getName());
+        List<StorageItem> itemList;
+        Folder.sortFolder(field, folder);
+        for (StorageItem item : folder){
+            if (item.getClass() == File.class) {
+                for (int j = 0; j < i; j++)
+                    System.out.print("| ");
+                System.out.println(item.getName());
+            }
+            if (item.getClass() == Folder.class)
+                printTreeSecondary(item, i+1);
+        }
+
+    }
+
+
+
+
     static void sortFolder(SortingField field, Folder folder) {
         switch (field){
             case SIZE:

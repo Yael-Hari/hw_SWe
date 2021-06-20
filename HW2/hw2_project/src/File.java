@@ -26,4 +26,6 @@ public class File extends StorageItem{
         System.out.println(this.getName() + " Size: " + this.getSize() + "MB" +
                 " Created" + this.getDate());
     }
+
+    void printTree(SortingField field){}
 }

@@ -1,5 +1,6 @@
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 abstract class StorageItem {
@@ -44,43 +45,10 @@ abstract class StorageItem {
         }
     }
 
-    void printTree(SortingField field) {
-        switch (field){
-            case SIZE:
-                //code
-                break;
-            case NAME:
-                //code
-                break;
-            case DATE:
-                //code
-                break;
 
-        }
+    abstract void printTree(SortingField field);
 
-    }
 
-    void printree(Folder folder){
-        printree_secondary(folder, 0);
-        }
-    }
-    void printree_secondary (Folder folder, int i){
-        for (int j=0; j<i; j++)
-            System.out.print("| ") ;
-        System.out.println();
-        System.out.println(folder.getName());
-        List<StorageItem> itemList;
-        itemList = sortBy (folder);
-        for (StorageItem item : folder){
-            if (value.getClass() == File.class) {
-                for (int j = 0; j < i; j++)
-                    System.out.print("| ");
-                System.out.println(item.getName());
-            }
-            if (value.getClass() == Folder.class)
-                printree_secondary (item, i+1);
-        }
-    }
 
 
 
