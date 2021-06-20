@@ -5,5 +5,18 @@ enum SortingField
     DATE;
 }
 
+class sortingMethods {
 
+    void sortByName(){
+
+    }
+
+    void sortByDate(){
+
+    }
+
+    void sortBySize(){
+
+    }
+}
 

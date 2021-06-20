@@ -40,26 +40,26 @@ public class Folder extends StorageItem {
              if (file.getName() == path_list[i])
                  return file;
          for (Folder folder : folder_list)
-             if (Folder.getName() == path_list[i])
-                 return find_file_secondary(path_list,i+1, folder.folderList, folder.fileList)
+             if (folder.getName() == path_list[i])
+                 return find_file_secondary(path_list,i+1, folder.folderList, folder.fileList);
          return null;
      }
 
      int getSize (){
-        sum = 0;
+        int sum = 0;
         for(File file : this.fileList)
-            sum += file.getsize();
+            sum += file.getSize();
         for (Folder folder : this.folderList){
             sum += getSize_secondary (folder);
-        return sum;
         }
+        return sum;
      }
 
      int getSize_secondary( Folder folder){
-        sum = 0;
+        int sum = 0;
          for(File file : folder.fileList)
-             sum += file.getsize();
-         if (! folder.isEmpty())
+             sum += file.getSize();
+         if (! folder.folderList.isEmpty())
              for (Folder i : folder.folderList)
                  sum +=  getSize_secondary (folder);
          return sum;

@@ -8,6 +8,7 @@ public class File extends StorageItem{
         this.fileContent = "";
     }
 
+    @Override
     public String getName(){
         return this.getName() + "." + this.extension;
     }
