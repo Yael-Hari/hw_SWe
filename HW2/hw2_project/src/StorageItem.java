@@ -45,7 +45,18 @@ abstract class StorageItem {
     }
 
     void printTree(SortingField field) {
+        switch (field){
+            case SIZE:
+                //code
+                break;
+            case NAME:
+                //code
+                break;
+            case DATE:
+                //code
+                break;
 
+        }
     }
 
 

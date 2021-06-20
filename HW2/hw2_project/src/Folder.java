@@ -46,19 +46,17 @@ public class Folder extends StorageItem {
      }
 
      int getSize (){
-        int sum = 0;
+        sum = 0;
         for(File file : this.fileList)
             sum += file.getsize();
-         if (! folder.isEmpty())
-        for (Folder folder : this.folderList) {
-            sum += getSize_secondary(folder);
-        }
-        this.size = sum;
+        for (Folder folder : this.folderList){
+            sum += getSize_secondary (folder);
         return sum;
+        }
      }
 
      int getSize_secondary( Folder folder){
-        int sum = 0;
+        sum = 0;
          for(File file : folder.fileList)
              sum += file.getsize();
          if (! folder.isEmpty())

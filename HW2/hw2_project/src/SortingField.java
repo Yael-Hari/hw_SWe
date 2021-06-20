@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 enum SortingField
 {
     SIZE,
@@ -13,5 +10,19 @@ void sort(Folder folder){
     mergeList.addAll(folder.folderList());
     mergeList.addAll(folder.fileList());
     mergeList.sort(Comparator.comparing(StorageItem::size));
+}
+class sortingMethods {
+
+    void sortByName(){
+
+    }
+
+    void sortByDate(){
+
+    }
+
+    void sortBySize(){
+
+    }
 }
 
