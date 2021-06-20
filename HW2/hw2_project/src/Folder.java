@@ -66,7 +66,7 @@ public class Folder extends StorageItem {
          return sum;
      }
 
-    List<StorageItem> sortList(SortingField field, Folder folder) {
+    static void sortFolder(SortingField field, Folder folder) {
         switch (field){
             case SIZE:
                 SortingMethods.sortBySize(folder);
@@ -77,7 +77,8 @@ public class Folder extends StorageItem {
             case DATE:
                 SortingMethods.sortByDate(folder);
                 break;
-
+            default:
+                break;
         }
 
     }
