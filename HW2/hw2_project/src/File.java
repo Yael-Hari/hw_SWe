@@ -10,7 +10,7 @@ public class File extends StorageItem{
 
     @Override
     public String getName(){
-        return this.getName() + "." + this.extension;
+        return this.name + "." + this.extension;
     }
 
     public int getSize(){

@@ -1,11 +1,12 @@
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 abstract class StorageItem {
-    private String name;
-    private long date;
+    protected String name;
+    protected long date;
     protected int size;
 
     public StorageItem(String name){
@@ -31,7 +32,7 @@ abstract class StorageItem {
     public void setDate(){
         //find milliseconds from 1970 to 2021
         String strDate = "2021-12-31 23:59:59";
-        Timestamp endOfTimesStamp= Timestamp.valueOf(strDate);
+        Timestamp endOfTimesStamp = Timestamp.valueOf(strDate);
         Long milliseconds = endOfTimesStamp.getTime();
 
         //generate random long
@@ -43,6 +44,18 @@ abstract class StorageItem {
         } else {
             this.date = longLottery % milliseconds;
         }
+
+//        Calendar cal1 = Calendar.getInstance();
+//        cal1.set(Calendar.DATE, 30);
+//        cal1.set(Calendar.MONTH, 11);
+//        cal1.set(Calendar.YEAR, 2021);
+//        cal1.set(Calendar.HOUR, 23);
+//        cal1.set(Calendar.MINUTE, 59);
+//        cal1.set(Calendar.SECOND, 59);
+//        Date date1 = cal1.getTime();
+//
+//        System.out.println("date: " + date1);
+
     }
 
 

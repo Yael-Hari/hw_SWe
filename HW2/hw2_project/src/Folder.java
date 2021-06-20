@@ -32,6 +32,10 @@ public class Folder extends StorageItem {
 
      File findFile (String path){
          String[] path_list = path.split("/");
+         for (String path1 : path_list){
+             System.out.print(path1 + ", ");
+             System.out.println();
+         }
          return find_file_secondary(path_list, 0, this.folderList, this.fileList);
     }
 
@@ -67,46 +71,43 @@ public class Folder extends StorageItem {
      }
 
     void printTree(SortingField field){
-        printTreeSecondary(0, field);
+        printTreeSecondary(this, 0, field);
     }
 
     void printTreeSecondary (Folder folder, int i, SortingField field){
         for (int j=0; j<i; j++)
-            System.out.print("| ") ;
-        System.out.println();
+            System.out.print("|    ") ;
         System.out.println(folder.getName());
         List<StorageItem> itemList;
-        Folder.sortFolder(field, folder);
-        for (StorageItem item : folder){
+        itemList = Folder.sortFolder(field, folder);
+        for (StorageItem item : itemList){
             if (item.getClass() == File.class) {
-                for (int j = 0; j < i; j++)
-                    System.out.print("| ");
+                for (int j = 0; j < i+1; j++)
+                    System.out.print("|    ");
                 System.out.println(item.getName());
             }
             if (item.getClass() == Folder.class)
-                printTreeSecondary(item, i+1);
+                printTreeSecondary((Folder)item, i+1, field);
         }
-
     }
 
 
-
-
-    static void sortFolder(SortingField field, Folder folder) {
+    static List<StorageItem> sortFolder(SortingField field, Folder folder) {
+        List<StorageItem> mergeList = new ArrayList<StorageItem>();
         switch (field){
             case SIZE:
-                SortingMethods.sortBySize(folder);
+                mergeList = SortingMethods.sortBySize(folder);
                 break;
             case NAME:
-                SortingMethods.sortByName(folder);
+                mergeList = SortingMethods.sortByName(folder);
                 break;
             case DATE:
-                SortingMethods.sortByDate(folder);
+                mergeList = SortingMethods.sortByDate(folder);
                 break;
             default:
                 break;
         }
-
+        return mergeList;
     }
 
 }
