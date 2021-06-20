@@ -99,6 +99,7 @@ public class WarGame {
                         System.out.println(player1.getName() + " drew a war card");
                         System.out.println(player2.getName() + " drew a war card");
                     }
+
                 }
 
                 i = middleDeck1.getDeck().size() - 1;
