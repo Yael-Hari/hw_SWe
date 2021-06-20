@@ -10,16 +10,9 @@ enum SortingField
 }
 
 
-class sortingMethods {
+class SortingMethods {
 
-    void sort(Folder folder){
-        List<StorageItem> mergeList = new ArrayList<StorageItem>();
-        mergeList.addAll(folder.folderList);
-        mergeList.addAll(folder.fileList);
-        mergeList.sort(Comparator.comparing(StorageItem::getSize));
-    }
-
-    List<StorageItem> sortByName(Folder folder){
+    public static List<StorageItem> sortByName(Folder folder){
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);
@@ -27,19 +20,28 @@ class sortingMethods {
         return mergeList;
     }
 
-    List<StorageItem> sortByDate(Folder folder){
+//    //Compare by first name and then last name
+//    Comparator<Employee> compareByName = Comparator
+//            .comparing(Employee::getFirstName)
+//            .thenComparing(Employee::getLastName);
+
+    public static List<StorageItem> sortByDate(Folder folder){
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);
-        mergeList.sort(Comparator.comparing(StorageItem::getDate));
+        mergeList.sort(Comparator
+                .comparing(StorageItem::getDate)
+                .thenComparing(StorageItem::getName));
         return mergeList;
     }
 
-    List<StorageItem> sortBySize(Folder folder){
+    public static List<StorageItem> sortBySize(Folder folder){
         List<StorageItem> mergeList = new ArrayList<StorageItem>();
         mergeList.addAll(folder.folderList);
         mergeList.addAll(folder.fileList);
-        mergeList.sort(Comparator.comparing(StorageItem::getSize));
+        mergeList.sort(Comparator
+                .comparing(StorageItem::getSize)
+                .thenComparing(StorageItem::getName));
         return mergeList;
     }
 }

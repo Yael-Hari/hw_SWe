@@ -5,7 +5,7 @@ import java.util.Random;
 abstract class StorageItem {
     private String name;
     private long date;
-    private int size;
+    protected int size;
 
     public StorageItem(String name){
         /** builder **/
