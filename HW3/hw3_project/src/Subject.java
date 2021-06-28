@@ -1,3 +1,3 @@
 interface Subject {
-    public void notifyObservers();
+    public void notifyObservers(String message);
 }

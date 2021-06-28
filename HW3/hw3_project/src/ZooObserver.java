@@ -18,6 +18,6 @@ public class ZooObserver implements Observer {
     }
 
     public void display(){
-        System.out.println(desc);
+        System.out.println("[" +this.name + "] " + desc);
     }
 }

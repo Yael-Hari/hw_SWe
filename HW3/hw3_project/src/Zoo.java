@@ -3,24 +3,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo implements Subject{
-    private List<Animal> animalsList;
-    private List<Observer> observersList;
+    private List<Animal> animalsList = new ArrayList<>();
+    private List<Observer> observersList = new ArrayList<>();
     public static Zoo instance = null;
-
-    private Zoo(){
-        animalsList = new ArrayList<>();
-        observersList = new ArrayList<>();
-    }
 
     public static Zoo getInstance(){
         if (instance == null) {
+            System.out.println("Creating zoo...");
             instance = new Zoo();
+        }
+        else {
+            System.out.println("The zoo already exists...");
         }
         return instance;
     }
 
     public <T extends Animal> void addAnimal(T newAnimal){
         this.animalsList.add(newAnimal);
+        notifyObservers(newAnimal.animalType + " has been added to the zoo!");
+
     }
 
     public void showAnimalsInfo(){
@@ -35,8 +36,9 @@ public class Zoo implements Subject{
         this.observersList.remove(observer);
     }
 
-
+    @Override
     public void notifyObservers(String message){
+        System.out.println("Notifying observers:");
         for (Observer observer: observersList){
             observer.update(message);
         }
@@ -54,5 +56,6 @@ public class Zoo implements Subject{
             animal.increaceHunger();
             animal.increaceHappiness();
         }
+        notifyObservers("The animals are being watched");
     }
 }

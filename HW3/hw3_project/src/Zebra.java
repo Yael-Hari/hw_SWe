@@ -1,4 +1,4 @@
 public class Zebra extends Animal {
     String food = "grass";
-    String animalType = "zebra";
+    String animalType = "Zebra";
 }

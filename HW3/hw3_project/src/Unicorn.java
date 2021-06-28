@@ -1,6 +1,13 @@
-public class Unicorn extends Animal implements Subject {
+public class Unicorn extends Animal {
     String food = "rainbow cakes";
-    String animalType = "unicorn";
+    String animalType = "Unicorn";
 
-    public Unicorn(){}
+    public Unicorn(){
+        notifyObservers("Unicorn");
+    }
+
+    @Override
+    public void notifyObservers(String message) {
+
+    }
 }
