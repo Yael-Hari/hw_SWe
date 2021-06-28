@@ -44,16 +44,18 @@ public class Zoo implements Subject{
 
     public void feedAnimals(){
         for (Animal animal : animalsList){
-            animal.decreaceHunger();
+            animal.printFeedingStatement();
         }
+
         notifyObservers("The animals are being fed");
     }
 
     public void watchAnimals(){
         for (Animal animal : animalsList){
-            animal.increaceHunger();
-            animal.increaceHappiness();
+            animal.printWatchStatement();
         }
+        Animal.happinessLevel++;
+        Animal.hungerLevel++;
         notifyObservers("The animals are being watched");
     }
 }

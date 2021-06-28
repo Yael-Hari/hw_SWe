@@ -1,29 +1,16 @@
-public abstract class Animal implements Subject{
-    int happinessLevel = 2;
-    int hungerLevel = 3;
+public abstract class Animal {
+    static int happinessLevel = 2;
+    static int hungerLevel = 3;
     String food;
     String animalType;
 
-    public void increaceHappiness(){
-        happinessLevel++;
+    public void printWatchStatement(){
         System.out.println("The " + this.animalType.toLowerCase() + " is " + this.food + "...");
     }
 
-    public void decreaceHappiness(){
-        happinessLevel--;
-    }
-
-    public void increaceHunger(){
-        hungerLevel++;
+    public void printFeedingStatement(){
         System.out.println("The " + this.animalType.toLowerCase() + " is eating " + this.food + "...");
     }
 
-    public void decreaceHunger(){
-        hungerLevel--;
-    }
-
-    @Override
-    public void notifyObservers(String message){
-    }
 
 }

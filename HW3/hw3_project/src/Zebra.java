@@ -1,4 +1,6 @@
 public class Zebra extends Animal {
-    String food = "grass";
-    String animalType = "Zebra";
+    public Zebra() {
+        this.food = "grass";
+        this.animalType = "Zebra";
+    }
 }

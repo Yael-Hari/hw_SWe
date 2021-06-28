@@ -1,4 +1,6 @@
 public class Monkey extends Animal{
-    String food = "bananas";
-    String animalType = "monkey";
+    public Monkey(){
+        this.food = "bananas";
+        this.animalType = "Monkey";
+    }
 }
