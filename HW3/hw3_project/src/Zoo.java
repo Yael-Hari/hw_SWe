@@ -3,16 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo implements Subject{
-    private List<Animal> animalsList = new ArrayList<>();
-    private List<Observer> observersList = new ArrayList<>();
+    private List<Animal> animalsList = new ArrayList<Animal>();
+    private List<Observer> observersList = new ArrayList<Observer>();
     public static Zoo instance = null;
 
     public static Zoo getInstance(){
         if (instance == null) {
             System.out.println("Creating zoo...");
             instance = new Zoo();
-        }
-        else {
+        } else {
             System.out.println("The zoo already exists...");
         }
         return instance;
@@ -21,7 +20,6 @@ public class Zoo implements Subject{
     public <T extends Animal> void addAnimal(T newAnimal){
         this.animalsList.add(newAnimal);
         notifyObservers(newAnimal.animalType + " has been added to the zoo!");
-
     }
 
     public void showAnimalsInfo(){
