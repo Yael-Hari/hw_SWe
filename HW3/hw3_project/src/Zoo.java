@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zoo {
+public class Zoo implements Subject{
     private List<Animal> animalsList;
     private List<Observer> observersList;
     public static Zoo instance = null;
@@ -32,6 +32,13 @@ public class Zoo {
 
     public void removeObserver(Observer observer){
         this.observersList.remove(observer);
+    }
+
+
+    public void notifyObservers(String message){
+        for (Observer observer: observersList){
+            observer.update(message);
+        }
     }
 
     public void feedAnimals(){
