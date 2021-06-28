@@ -6,15 +6,12 @@ public class ZooObserver implements Observer {
         this.name = name;
     }
 
-    @Override
-    public void update(String newUpdate){
-
-    }
 
     public String getName() {
         return this.name;
     }
 
+    @Override
     public void update (String desc){
         this.desc = desc;
         display();

@@ -6,6 +6,7 @@ public abstract class Animal {
 
     public void increaceHappiness(){
         happinessLevel++;
+        System.out.println("the " + this.animalType + " is " + this.food + "...");
     }
 
     public void decreaceHappiness(){
