@@ -35,5 +35,7 @@ public class File extends StorageItem{
                 "\n" + getContent());
     }
 
-    void printTree(SortingField field){}
+    void printTree(SortingField field){
+        System.out.println(this.getName());
+    }
 }
