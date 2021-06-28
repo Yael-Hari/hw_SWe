@@ -7,17 +7,19 @@ public class ZooObserver implements Observer {
     }
 
 
-    public String getName() {
-        return this.name;
-    }
-
     @Override
     public void update (String desc){
+        /**
+         * updates the observation of the observer
+         */
         this.desc = desc;
         display();
     }
 
     public void display(){
+        /**
+         * prints the observation
+         */
         System.out.println("[" +this.name + "] " + desc);
     }
 }
