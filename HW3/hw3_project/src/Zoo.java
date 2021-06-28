@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-    private List<AnimalFactory> animalsList;
+    private List<Animal> animalsList;
     private List<Observer> observersList;
     public static Zoo instance = null;
 
@@ -18,7 +18,7 @@ public class Zoo {
         return instance;
     }
 
-    public <T extends AnimalFactory> void addAnimal(T newAnimal){
+    public <T extends Animal> void addAnimal(T newAnimal){
         this.animalsList.add(newAnimal);
     }
 
@@ -28,5 +28,13 @@ public class Zoo {
 
     public void addObserver(Observer observer){
         this.observersList.add(observer);
+    }
+
+    public removeObserver()
+
+    public void feedAnimals(){
+        for (Animal animal : animalsList){
+            animal.increaseFeedingLevel();
+        }
     }
 }

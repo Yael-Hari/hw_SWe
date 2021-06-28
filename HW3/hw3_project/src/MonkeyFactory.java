@@ -1,5 +1,5 @@
 public class MonkeyFactory extends AnimalFactory {
-    public Animal createAnimal(){
+    public AnimalFactory createAnimal(){
         return new Monkey();
     }
 }

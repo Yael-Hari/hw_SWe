@@ -10,11 +10,11 @@ public abstract class Animal {
         happinessLevel--;
     }
 
-    public void increacehunger(){
+    public void increaceHunger(){
         hungerLevel++;
     }
 
-    public void decreacehunger(){
+    public void decreaceHunger(){
         hungerLevel--;
     }
 
