@@ -12,6 +12,7 @@ public abstract class Animal {
 
     public void increaceHunger(){
         hungerLevel++;
+        System.out.println(this.food);
     }
 
     public void decreaceHunger(){
