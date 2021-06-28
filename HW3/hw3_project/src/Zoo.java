@@ -23,7 +23,30 @@ public class Zoo implements Subject{
     }
 
     public void showAnimalsInfo(){
-        //todo printing code
+        System.out.println("The zoo contains total of " + animalsList.getSize()+ " animals:");
+        int zebraCount =0;
+        int monkeyCount =0;
+        int unicornCount =0;
+        for (Animal animal : animalsList){
+            if(animal.animalType == "monkey")
+                monkeyCount++;
+            if(animal.animalType == "zebra")
+                zebraCount++;
+            if(animal.animalType == "unicron")
+                unicornCount++;
+        }
+        System.out.println("- Zebra: " + zebraCount);
+        System.out.println("- Unicorn: " + unicornCount);
+        System.out.println("- Monkey:: " + monkeyCount);
+        System.out.println("Happiness level: " + Animal.happinessLevel);
+        if (Animal.happinessLevel < 3)
+            System.out.println("The animals are not happy, you should watch them...");
+        if (Animal.happinessLevel > 3)
+            System.out.println("The animals are very happy, keep working hard...");
+        System.out.println("Happiness level: " + Animal.hungerLevel);
+        if (Animal.hungerlevel > 3)
+            System.out.println("The animals are hungry, you should feed them...");
+
     }
 
     public void addObserver(Observer observer){
@@ -58,4 +81,8 @@ public class Zoo implements Subject{
         Animal.hungerLevel++;
         notifyObservers("The animals are being watched");
     }
+
+
+
+
 }
