@@ -30,11 +30,22 @@ public class Zoo {
         this.observersList.add(observer);
     }
 
-    public removeObserver()
+    public void removeObserver(Observer observer){
+        this.observersList.remove(observer);
+    }
 
     public void feedAnimals(){
         for (Animal animal : animalsList){
-            animal.increaseFeedingLevel();
+            animal.decreaceHunger();
+        }
+    }
+
+    public void watchAnimals(){
+        public void feedAnimals(){
+            for (Animal animal : animalsList){
+                animal.increaceHunger();
+                animal.increaceHappiness();
+            }
         }
     }
 }

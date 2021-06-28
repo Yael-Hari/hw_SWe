@@ -1,5 +1,4 @@
 public abstract class AnimalFactory {
-    public abstract Animal createAnimal
-
-
+    public abstract Animal createAnimal()
+}
 
