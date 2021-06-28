@@ -11,7 +11,7 @@ public class Zoo {
         observersList = new ArrayList<>();
     }
 
-    public Zoo getInstance(){
+    public static Zoo getInstance(){
         if (instance == null) {
             instance = new Zoo();
         }
@@ -41,11 +41,9 @@ public class Zoo {
     }
 
     public void watchAnimals(){
-        public void feedAnimals(){
-            for (Animal animal : animalsList){
-                animal.increaceHunger();
-                animal.increaceHappiness();
-            }
+        for (Animal animal : animalsList){
+            animal.increaceHunger();
+            animal.increaceHappiness();
         }
     }
 }
